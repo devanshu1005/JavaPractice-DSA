@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+//TODO: incomplete
+//output should also be in form of array. Currently it is in form of int
+
 public class SumOfTwoArrays{
      public static void main(String[] args) {          
         Scanner scn = new Scanner(System.in);
