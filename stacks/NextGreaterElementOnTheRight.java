@@ -14,35 +14,53 @@ public class NextGreaterElementOnTheRight{
         Stack<Integer> st = new Stack<>();
         int[] arrA = new int[arr.length];
 
-        for(int i = arr.length - 1; i >= 0; i--){
-            System.out.println("st.size(): "+st.size()+ "\t"+"i: "+ i);
-            if(st.size() > 0){
-                //pop
-                while((int)st.peek() < arr[i]){
-                    st.pop();
-                    if(st.size() == 0){
-                        break;
-                    }
-                }
+        //Approach 1
 
-                //print ans
-                if(st.size() > 0){
-                arrA[i] = st.peek();
-                } else {
-                    arrA[i] = -1;
-                }
+        // for(int i = arr.length - 1; i >= 0; i--){
+        //     System.out.println("st.size(): "+st.size()+ "\t"+"i: "+ i);
+        //     if(st.size() > 0){
+        //         //pop
+        //         while((int)st.peek() < arr[i]){
+        //             st.pop();
+        //             if(st.size() == 0){
+        //                 break;
+        //             }
+        //         }
+
+        //         //print ans
+        //         if(st.size() > 0){
+        //         arrA[i] = st.peek();
+        //         } else {
+        //             arrA[i] = -1;
+        //         }
                
 
-                //push
-                st.push(arr[i]);
+        //         //push
+        //         st.push(arr[i]);
             
-           } else {
-                arrA[i] = -1;
+        //    } else {
+        //         arrA[i] = -1;
 
-                 st.push(arr[i]);
-           }
-           System.out.println("stack: "+ st);
+        //          st.push(arr[i]);
+        //    }
+        //    System.out.println("stack: "+ st);
 
+        // }
+
+        //Approach 2
+            st.push(0);
+        for(int i = 1; i< arr.length; i++){
+            while ((st.size()> 0)&& (arr[i] > arr[(int) st.peek()])){
+                arrA[(int) st.peek()] = arr[i];
+                st.pop();
+            }
+                st.push(i);
+
+        }
+
+        while(st.size() != 0){
+            arrA[(int) st.peek()] = -1;
+            st.pop();
         }
 
         for(int i = 0; i< arrA.length; i++){
