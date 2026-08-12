@@ -68,8 +68,8 @@ public class InfixConversions{
                         String resPost = solvePost(var1Post, var2Post, ch);
                         stPost.push(resPost);
                         // System.out.println(str.charAt(i));
-                        System.out.println(st);
-                        System.out.println(stPost);
+                        // System.out.println(st);
+                        // System.out.println(stPost);
                     }
                     operator.pop();
              }else{
