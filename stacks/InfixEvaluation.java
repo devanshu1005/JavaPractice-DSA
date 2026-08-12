@@ -39,7 +39,7 @@ public class InfixEvaluation{
             if(Character.isDigit(str.charAt(i))){
                     st.push((int)str.charAt(i) - '0');
              } else if (str.charAt(i) == '+' || str.charAt(i) == '-' || str.charAt(i) == '*' || str.charAt(i) == '/'){
-                    while(operator.size() > 0 && precedence(operator.peek()) >= precedence(str.charAt(i))){
+                    while(operator.size() > 0 && precedence(operator.peek()) >= precedence(str.charAt(i)) ){
                         int var2 = st.pop();
                         int var1 = st.pop();
                         char ch = operator.pop();
@@ -65,8 +65,6 @@ public class InfixEvaluation{
              }
            }
 
-            // System.out.println(operator);
-            // System.out.println(st);
             while(operator.size() > 0){
                  int var2 = st.pop();
                  int var1 = st.pop();
