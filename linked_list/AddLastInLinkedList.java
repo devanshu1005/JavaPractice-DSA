@@ -96,6 +96,18 @@ public class AddLastInLinkedList {
         }
     }
 
+    public void addFirst(int val){
+            Node temp = new Node(val);
+      if(size == 0){
+            head = temp;
+            head.next = temp;
+      } else {
+        temp.next = head;
+        head = temp;
+      }
+            size++;
+    }
+
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
@@ -130,6 +142,9 @@ public class AddLastInLinkedList {
             }else if (choice == 7) {
                 int index = scn.nextInt();
                 System.out.println(list.getAt(index));
+            } else if (choice == 8) {
+                int val = scn.nextInt();
+                list.addFirst(val);
             } 
         }
     }
