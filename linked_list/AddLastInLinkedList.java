@@ -32,11 +32,30 @@ public class AddLastInLinkedList {
 
     public int size() {
         // TODO
-        return 0;
+        return size;
     }
 
     public void display() {
         // TODO
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+    }
+
+    public void removeFirst(){
+        if(size == 0){
+                System.out.print("empty list");
+        } else if(size == 1){
+                head = null;
+                tail = null;
+                size--;
+        } else {
+                Node temp = head;
+                head = temp.next;
+                size--;
+        }
     }
 
     public static void main(String[] args) {
