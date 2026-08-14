@@ -84,15 +84,20 @@ public class AddLastInLinkedList {
         } else if(index == 0){
                 return head.data;
         } else {
-                Node headTemp = new Node(0);
-                headTemp.next = head.next;
-                int i = 1;
+            //     Node headTemp = new Node(0);
+            //     headTemp.next = head.next;
+            //     int i = 1;
                
-             while(i < index){
-                headTemp.next = headTemp.next.next;
-                i++;
+            //  while(i < index){
+            //     headTemp.next = headTemp.next.next;
+            //     i++;
+            // }
+            // return headTemp.next.data;
+            Node temp = head;
+            for(int i = 0; i<index; i++){
+                temp = temp.next;
             }
-            return headTemp.next.data;
+            return temp.next.data;
         }
     }
 
@@ -136,6 +141,81 @@ public class AddLastInLinkedList {
         }
     }
 
+    public void removeLast(){
+    if(size == 0){
+        System.out.print("empty list");
+    } else if(size == 1){
+        head = null;
+        tail = null;
+        size--;
+    } else {
+        Node temp = head;
+
+        for(int i = 0; i < size - 2; i++){
+            temp = temp.next;
+        }
+
+        tail = temp;
+        temp.next = null;
+        size--;
+    }
+    }
+
+    public void removeAt(int index){
+        if(size == 0){
+            System.out.println("empty list");
+        } else if(index < 0 || index > size -1){
+            System.out.println("invalid index");
+        } else if(size == 1){
+            head = null;
+            tail = null;
+            size = 0;
+        } else if(index == 0){
+            head = head.next;
+            size--;
+        } else if(index == size-1){
+           removeLast();
+        }
+        else {
+            Node temp = head;
+            for(int i = 0; i< index - 1; i++){
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+            size--;
+        }
+    }
+
+    private Node getNodeAt(int index){
+              Node temp = head;
+            for(int i = 0; i<index; i++){
+                temp = temp.next;
+            }
+            return temp;
+    }
+
+     public void reverseDI(){
+      if(size == 0){
+        System.out.println("empty list");
+      } else if(size == 1){
+        System.out.println("Only one item present. Can't reverse");
+      } else {
+       int li = 0;
+       int ri = size -1;
+       while(li<ri){
+        Node left = getNodeAt(li);
+        Node right = getNodeAt(ri);
+
+        int temp = left.data;
+        left.data = right.data;
+        right.data = temp;
+
+        li++;
+        ri--;
+       }
+      }
+    }
+
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
@@ -177,7 +257,10 @@ public class AddLastInLinkedList {
                 int index = scn.nextInt();
                 int val = scn.nextInt();
                 list.addAtIndex(index, val);
-            } 
+            } else if (choice == 10) {
+
+                list.reverse();
+            }
         }
     }
 }
