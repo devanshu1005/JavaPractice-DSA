@@ -21,7 +21,6 @@ public class BuildNormalQueue {
     }
 
     public void add(int val) {
-        // TODO
         if(pos > (data.length -1)){
             int i = pos % data.length;
             if(data[i] != -1){
@@ -39,7 +38,6 @@ public class BuildNormalQueue {
     }
 
     public int remove() {
-        // TODO
          if(removeIndex > (data.length -1)){
             int i = removeIndex % data.length;
             if(data[i] != -1){
@@ -62,22 +60,18 @@ public class BuildNormalQueue {
     }
 
     public int peek() {
-        // TODO
         return -1;
     }
 
     public int size() {
-        // TODO
         return 0;
     }
 
     public boolean isEmpty() {
-        // TODO
         return false;
     }
 
     public void display() {
-        // TODO
     }
 
     public static void main(String[] args) {

@@ -31,12 +31,10 @@ public class AddLastInLinkedList {
     }
 
     public int size() {
-        // TODO
         return size;
     }
 
     public void display() {
-        // TODO
         Node temp = head;
         while(temp != null){
             System.out.print(temp.data + " ");
@@ -55,6 +53,46 @@ public class AddLastInLinkedList {
                 Node temp = head;
                 head = temp.next;
                 size--;
+        }
+    }
+
+    public int getFirst(){
+        if(size == 0){
+            System.out.println("List is empty");
+            return -1;
+        } else {
+            return head.data;
+        }
+    }
+
+    public int getLast(){
+        if(size == 0){
+            System.out.println("List is empty");
+            return -1;
+        } else {
+            return tail.data;
+        }
+    }
+
+    public int getAt(int index){
+          if(size == 0){
+            System.out.println("List is empty");
+            return -1;
+        } else if(index > size-1){
+            System.out.println("Invalid Argument");
+            return -1;
+        } else if(index == 0){
+                return head.data;
+        } else {
+                Node headTemp = new Node(0);
+                headTemp.next = head.next;
+                int i = 1;
+               
+             while(i < index){
+                headTemp.next = headTemp.next.next;
+                i++;
+            }
+            return headTemp.next.data;
         }
     }
 
@@ -82,7 +120,17 @@ public class AddLastInLinkedList {
             } else if (choice == 3) {
 
                 list.display();
-            }
+            } else if (choice == 4) {
+
+                list.removeFirst();
+            } else if (choice == 5) {
+                System.out.println(list.getFirst());
+            } else if (choice == 6) {
+                System.out.println(list.getLast());
+            }else if (choice == 7) {
+                int index = scn.nextInt();
+                System.out.println(list.getAt(index));
+            } 
         }
     }
 }

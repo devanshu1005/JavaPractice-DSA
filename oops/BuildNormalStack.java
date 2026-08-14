@@ -11,30 +11,25 @@ public class BuildNormalStack {
     }
 
     public void push(int val) {
-        // TODO
          tos++;
          data[tos] = val;
     }
 
     public int pop() {
-        // TODO
         int ans = data[tos];
         tos--;
         return ans;
     }
 
     public int top() {
-        // TODO
         return data[tos];
     }
 
     public int size() {
-        // TODO
         return tos+1;
     }
 
     public boolean isEmpty() {
-        // TODO
         if(tos >= 0){
             return false;
         }else{

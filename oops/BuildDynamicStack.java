@@ -28,7 +28,6 @@ public class BuildDynamicStack {
     }
 
      public int pop() {
-        // TODO
         if(tos == -1){
             System.out.print("Stack underflow");
             return -1;
@@ -41,17 +40,14 @@ public class BuildDynamicStack {
     }
 
     public int top() {
-        // TODO
         return data[tos];
     }
 
     public int size() {
-        // TODO
         return tos+1;
     }
 
     public boolean isEmpty() {
-        // TODO
         if(tos >= 0){
             return false;
         }else{
