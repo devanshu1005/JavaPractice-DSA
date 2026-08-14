@@ -108,6 +108,34 @@ public class AddLastInLinkedList {
             size++;
     }
 
+    public void addAtIndex(int index, int val){
+        Node temp = new Node(val);
+        if(size == 0 && index == 0){
+            head = temp;
+            tail = temp;
+            size++;
+        }else if(index > size || index < 0){
+            System.out.println("invalid argument");
+        } else if(index == 0){
+            temp.next = head;
+            head = temp;
+            size++;
+        } else if(index == size){
+            tail.next = temp;
+            tail = temp;
+            size++;
+        } else {
+            Node t = head;
+            for(int i = 0; i<index - 1; i++){
+                t = t.next;
+            }
+            temp.next = t.next;
+            t.next = temp;
+            size++;
+
+        }
+    }
+
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
@@ -145,6 +173,10 @@ public class AddLastInLinkedList {
             } else if (choice == 8) {
                 int val = scn.nextInt();
                 list.addFirst(val);
+            } else if (choice == 9) {
+                int index = scn.nextInt();
+                int val = scn.nextInt();
+                list.addAtIndex(index, val);
             } 
         }
     }
