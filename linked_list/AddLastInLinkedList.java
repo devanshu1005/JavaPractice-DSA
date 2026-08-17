@@ -216,6 +216,32 @@ public class AddLastInLinkedList {
       }
     }
 
+     public void reversePI(){
+      if(size == 0){
+        System.out.println("empty list");
+      } else if(size == 1){
+        System.out.println("Only one item present. Can't reverse");
+      } else {
+        Node prev = head;
+        Node curr = head.next;
+        Node next = head.next.next;
+
+        while(next != null){
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            next = next.next;
+        }
+
+        head.next = null;
+        tail.next = prev;
+
+        Node temp = head;
+        head = tail;
+        tail = temp;
+      }
+    }
+
     public static void main(String[] args) {
 
         Scanner scn = new Scanner(System.in);
@@ -259,7 +285,10 @@ public class AddLastInLinkedList {
                 list.addAtIndex(index, val);
             } else if (choice == 10) {
 
-                list.reverse();
+                list.reverseDI();
+            } else if (choice == 11) {
+
+                list.reversePI();
             }
         }
     }
