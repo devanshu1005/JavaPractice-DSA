@@ -17,27 +17,50 @@ public class QueueToStackAdapterPopEfficient {
             return 0;
         }
 
+        //Approach 1
+
         void push(int val) {
 
             while(mainQ.size() > 0){
-                helperQ.push(mainQ.remove());
+                helperQ.add(mainQ.remove());
             }
-            
-            mainQ.push(val);
+
+            mainQ.add(val);
 
              while(helperQ.size() > 0){
-                mainQ.push(helperQ.remove());
+                mainQ.add(helperQ.remove());
             }
         }
 
+        //Approach 2
+
+        //  void push(int val) {
+
+        //     while(mainQ.size() > 0){
+        //         helperQ.add(mainQ.remove());
+        //     }
+
+        //     mainQ.add(val);
+
+        //      while(helperQ.size() > 0){
+        //         mainQ.add(helperQ.remove());
+        //     }
+        // }
+
         int pop() {
-            // write your code here
-            return -1;
+            if(mainQ.size() == 0){
+                return -1;
+            } else {
+                return mainQ.remove();
+            }
         }
 
         int top() {
-            // write your code here
-            return -1;
+            if(mainQ.size() == 0){
+                return -1;
+            } else {
+                return mainQ.peek();
+            }
         }
     }
 
