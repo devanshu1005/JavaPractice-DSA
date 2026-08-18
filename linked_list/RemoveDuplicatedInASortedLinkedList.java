@@ -1,8 +1,6 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-//importtant
-
 public class RemoveDuplicatedInASortedLinkedList {
 
     public static class Node {
