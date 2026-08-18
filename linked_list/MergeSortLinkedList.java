@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-//importtant
+//important
 
 public class MergeSortLinkedList {
 
