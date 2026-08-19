@@ -101,17 +101,19 @@ public class AddLastInLinkedList {
         }
     }
 
-    public void addFirst(int val){
-            Node temp = new Node(val);
-      if(size == 0){
-            head = temp;
-            head.next = temp;
-      } else {
+     public void addFirst(int val) {
+
+    Node temp = new Node(val);
+
+    if(size == 0) {
+        head = tail = temp;
+    } else {
         temp.next = head;
         head = temp;
-      }
-            size++;
     }
+
+    size++;
+}
 
     public void addAtIndex(int index, int val){
         Node temp = new Node(val);
