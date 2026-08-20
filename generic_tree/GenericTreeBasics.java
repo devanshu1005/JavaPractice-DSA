@@ -32,6 +32,26 @@ public class GenericTreeBasics{
         }
     }
 
+    // public static int size(Node node, int size){
+    //    size++;
+        
+    //     for(Node child: node.children){
+    //         size = size(child, size);
+    //     }
+    //     return size;
+    // }
+
+     public static int size(Node node){
+       int size = 0;
+        
+        for(Node child: node.children){
+            size += size(child);
+        }
+ 
+        size++;
+        return size;
+    }
+
 
      public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
@@ -54,7 +74,9 @@ public class GenericTreeBasics{
                 }
         }
 
-        display(root);
+        // display(root);
+        int size = size(root);
+        System.out.println("Size: " + size);
 
      }
 }
