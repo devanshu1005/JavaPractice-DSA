@@ -63,6 +63,22 @@ public class GenericTreeBasics{
         return height;
     }
 
+     public static void traversal(Node node) {
+
+        System.out.println("Node Pre: " + node.data);
+
+        for(Node child: node.children) {
+        System.out.println("Edge Pre: " + node.data + " - " + child.data);
+       traversal(child);
+        System.out.println("Edge Post: " + node.data + " - " + child.data);
+        
+        }
+        System.out.println("Node Post: " + node.data);
+
+
+        return ;
+    }
+
     public static int max(Node node) {
         int max = Integer.MIN_VALUE;
 
@@ -106,7 +122,8 @@ public class GenericTreeBasics{
 
 
      public static void main(String[] args) {
-        int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
+        // int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
+        int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
         Node root = null;
 
         Stack<Node> st = new Stack<>();
@@ -127,14 +144,16 @@ public class GenericTreeBasics{
         }
 
         // display(root);
-        int size = size(root);
-        System.out.println("Size: " + size);
+        // int size = size(root);
+        // System.out.println("Size: " + size);
 
-        int max = max(root);
-        System.out.println("Max: " + max);
+        // int max = max(root);
+        // System.out.println("Max: " + max);
 
-        int height = height(root);
-        System.out.println("Height: " + height);
+        // int height = height(root);
+        // System.out.println("Height: " + height);
+
+        traversal(root);
 
      }
 }
