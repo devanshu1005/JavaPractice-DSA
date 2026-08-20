@@ -52,6 +52,58 @@ public class GenericTreeBasics{
         return size;
     }
 
+     public static int height(Node node) {
+       int height = -1;
+
+       for(Node child: node.children){
+         int childHeight = height(child);
+         height = Math.max(height, childHeight);
+       }
+        height++;
+        return height;
+    }
+
+    public static int max(Node node) {
+        int max = Integer.MIN_VALUE;
+
+        for(Node child: node.children) {
+            int cm = max(child);
+            max = Math.max(cm, max);
+        }
+
+        max = Math.max(node.data, max);
+
+        return max;
+    }
+
+//    public static int max(Node node) {
+
+//     int max = node.data;
+
+//     for(Node child : node.children) {
+//         int childMax = max(child);
+
+//             if(childMax > max) {
+//                 max = childMax;
+//             }
+//         }
+
+//          return max;
+//     }
+
+    //  public static int max(Node node, int val){
+    //    int max = node.data;
+    //    if(val> max){
+    //     max = val;
+    //    }
+
+    //    for(Node child: node.children){
+    //     max = max(child, max);
+    //    }
+
+    //    return max;
+    // }
+
 
      public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
@@ -77,6 +129,12 @@ public class GenericTreeBasics{
         // display(root);
         int size = size(root);
         System.out.println("Size: " + size);
+
+        int max = max(root);
+        System.out.println("Max: " + max);
+
+        int height = height(root);
+        System.out.println("Height: " + height);
 
      }
 }
