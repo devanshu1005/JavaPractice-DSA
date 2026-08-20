@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Stack;
+import java.util.*;
 
                          //                             D
                         //                             /\
@@ -80,11 +81,24 @@ public class GenericTreeBasics{
         System.out.println("Node Post: " + node.data);
 
     }
+
+    public static void levelOrderTraversal(Node node){
+         Queue<Node> q = new ArrayDeque<>();
+         q.add(node);
+         while(q.size() > 0){
+             node = q.remove();
+            System.out.print(node.data + " ");
+            for(Node child: node.children){
+                q.add(child);
+            }
+         }
+         return;
+     }
    
 
      public static void main(String[] args) {
-        // int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
-        int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
+        int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
+        // int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
         Node root = null;
 
         Stack<Node> st = new Stack<>();
@@ -114,7 +128,9 @@ public class GenericTreeBasics{
         int height = height(root);
         System.out.println("Height: " + height);
 
-        traversal(root);
+        // traversal(root);
+
+        levelOrderTraversal(root);
 
      }
 }
