@@ -94,6 +94,27 @@ public class GenericTreeBasics{
          }
          return;
      }
+
+     public static void LevelOrderLinewise(Node node){
+         Queue<Node> q = new ArrayDeque<>();
+         Queue<Node> cq = new ArrayDeque<>();
+         q.add(node);
+         while(q.size() > 0 ){
+             node = q.remove();
+            System.out.print(node.data + " ");
+            for(Node child: node.children){
+                cq.add(child);
+            }
+
+            if(q.size() == 0){
+                System.out.println("");
+                while(cq.size() > 0){
+                    q.add(cq.remove());
+                }
+            }
+         }
+
+     }
    
 
      public static void main(String[] args) {
@@ -130,7 +151,9 @@ public class GenericTreeBasics{
 
         // traversal(root);
 
-        levelOrderTraversal(root);
+        // levelOrderTraversal(root);
+
+        LevelOrderLinewise(root);
 
      }
 }
