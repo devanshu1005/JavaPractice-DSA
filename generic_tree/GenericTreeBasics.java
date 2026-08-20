@@ -32,94 +32,55 @@ public class GenericTreeBasics{
         }
     }
 
-    // public static int size(Node node, int size){
-    //    size++;
-        
-    //     for(Node child: node.children){
-    //         size = size(child, size);
-    //     }
-    //     return size;
-    // }
-
-     public static int size(Node node){
-       int size = 0;
-        
+    public static int size(Node node){
+        int size = 0;
         for(Node child: node.children){
-            size += size(child);
+           int cs = size(child);
+            size = cs + size;
         }
- 
         size++;
         return size;
     }
 
-     public static int height(Node node) {
-       int height = -1;
-
-       for(Node child: node.children){
-         int childHeight = height(child);
-         height = Math.max(height, childHeight);
-       }
-        height++;
-        return height;
-    }
-
-     public static void traversal(Node node) {
-
-        System.out.println("Node Pre: " + node.data);
-
-        for(Node child: node.children) {
-        System.out.println("Edge Pre: " + node.data + " - " + child.data);
-       traversal(child);
-        System.out.println("Edge Post: " + node.data + " - " + child.data);
-        
-        }
-        System.out.println("Node Post: " + node.data);
-
-
-        return ;
-    }
-
-    public static int max(Node node) {
+    public static int max(Node node){
         int max = Integer.MIN_VALUE;
 
-        for(Node child: node.children) {
+        for(Node child: node.children){
             int cm = max(child);
-            max = Math.max(cm, max);
+             max = (int)Math.max(max, cm);
         }
 
-        max = Math.max(node.data, max);
+         max = Math.max(node.data, max);
+         return max;
 
-        return max;
     }
 
-//    public static int max(Node node) {
+     public static int height(Node node){
+        int height = -1;
 
-//     int max = node.data;
+       for(Node child: node.children){
+         int ch = height(child);
+         height = (int)Math.max(ch, height);
+       }
 
-//     for(Node child : node.children) {
-//         int childMax = max(child);
+       height +=1;
+       return height;
 
-//             if(childMax > max) {
-//                 max = childMax;
-//             }
-//         }
+    }
 
-//          return max;
-//     }
+    public static void traversal(Node node){
+        System.out.println("Node Pre: " + node.data);
 
-    //  public static int max(Node node, int val){
-    //    int max = node.data;
-    //    if(val> max){
-    //     max = val;
-    //    }
+        for(Node child: node.children){
+            System.out.println("Edge Pre: " + node.data + " - " + child.data);
+            traversal(child);
+            System.out.println("Edge Post: " + node.data + " - " + child.data);
+        }
 
-    //    for(Node child: node.children){
-    //     max = max(child, max);
-    //    }
+        System.out.println("Node Post: " + node.data);
 
-    //    return max;
-    // }
-
+    }
+   
 
      public static void main(String[] args) {
         // int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
@@ -144,14 +105,14 @@ public class GenericTreeBasics{
         }
 
         // display(root);
-        // int size = size(root);
-        // System.out.println("Size: " + size);
+        int size = size(root);
+        System.out.println("Size: " + size);
 
-        // int max = max(root);
-        // System.out.println("Max: " + max);
+        int max = max(root);
+        System.out.println("Max: " + max);
 
-        // int height = height(root);
-        // System.out.println("Height: " + height);
+        int height = height(root);
+        System.out.println("Height: " + height);
 
         traversal(root);
 
