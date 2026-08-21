@@ -19,6 +19,14 @@ public class GenericTreeBasics{
      public static class Node{
         int data;
         ArrayList<Node> children = new ArrayList<>();
+
+        // Node(){
+
+        // }
+
+        // Node(int data){
+        //     this.data = data;
+        // }
     }
 
     public static void display(Node node){
@@ -117,6 +125,31 @@ public class GenericTreeBasics{
         }
      }
 
+      public static void levelOrderLinewise1(Node node){
+        Queue<Node> q = new ArrayDeque<>();
+        q.add(node);
+        Node temp = new Node();
+        temp.data = -1;
+        q.add(temp);
+
+        while(q.size() > 0){
+            node = q.remove();
+            if(node.data == -1 ){
+                System.out.println();
+                 q.add(temp);
+                 if(q.size() == 1){
+                    break;
+                 }
+            } else {
+            System.out.print(node.data + " ");
+            for(Node child: node.children){
+                q.add(child);
+            }
+            }
+            
+        }
+      }
+
      public static void levelOrderLinewiseZigZag(Node node){
         Stack<Node> mst = new Stack<>();
         Stack<Node> cst = new Stack<>();
@@ -170,20 +203,22 @@ public class GenericTreeBasics{
         }
 
         // display(root);
-        int size = size(root);
-        System.out.println("Size: " + size);
+        // int size = size(root);
+        // System.out.println("Size: " + size);
 
-        int max = max(root);
-        System.out.println("Max: " + max);
+        // int max = max(root);
+        // System.out.println("Max: " + max);
 
-        int height = height(root);
-        System.out.println("Height: " + height);
+        // int height = height(root);
+        // System.out.println("Height: " + height);
 
         // traversal(root);
 
         // levelOrderTraversal(root);
 
-        levelOrderLinewise(root);
+        // levelOrderLinewise(root);
+
+        levelOrderLinewise1(root);
 
         // levelOrderLinewiseZigZag(root);
 
