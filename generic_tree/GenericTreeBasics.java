@@ -100,7 +100,7 @@ public class GenericTreeBasics{
          Queue<Node> cq = new ArrayDeque<>();
          q.add(node);
          while(q.size() > 0 ){
-             node = q.remove();
+            node = q.remove();
             System.out.print(node.data + " ");
             for(Node child: node.children){
                 cq.add(child);
@@ -108,18 +108,47 @@ public class GenericTreeBasics{
 
             if(q.size() == 0){
                 System.out.println("");
-                while(cq.size() > 0){
-                    q.add(cq.remove());
-                }
+                q = cq;
+                cq = new ArrayDeque<>();
+
             }
          }
 
      }
+
+     public static void levelOrderLinewiseZigZag(Node node){
+        Stack<Node> mst = new Stack<>();
+        Stack<Node> cst = new Stack<>();
+        mst.push(node);
+        int level = 1;
+        while(mst.size() > 0){
+            node = mst.pop();
+            System.out.print(node.data + " ");
+            if(level % 2 == 0){
+                for(int i = (node.children.size() -1); i >=0; i--){
+                    Node child = node.children.get(i);
+                    cst.push(child);
+                }
+            } else {
+                 for(int i = 0; i < node.children.size(); i++){
+                    Node child = node.children.get(i);
+                    cst.push(child);
+                }
+            }
+
+            if(mst.size() == 0){
+                mst = cst;
+                cst = new Stack<>();
+                System.out.println();
+                level++;
+            }
+        }
+     }
    
 
      public static void main(String[] args) {
-        int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
-        // int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
+        // int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
+        int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
         Node root = null;
 
         Stack<Node> st = new Stack<>();
@@ -153,7 +182,9 @@ public class GenericTreeBasics{
 
         // levelOrderTraversal(root);
 
-        LevelOrderLinewise(root);
+        // LevelOrderLinewise(root);
+
+        levelOrderLinewiseZigZag(root);
 
      }
 }
