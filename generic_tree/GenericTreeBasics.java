@@ -150,6 +150,22 @@ public class GenericTreeBasics{
         }
       }
 
+      public static void levelOrderLinewise2(Node node){
+        Queue<Node> q = new ArrayDeque<>();
+        q.add(node);
+        while(q.size() > 0){
+            int count = q.size();
+            for(int i= 0; i< count; i++){
+                node = q.remove();
+                System.out.print(node.data + " ");
+                for(Node child: node.children){
+                    q.add(child);
+                }
+            }
+                System.out.println();
+        }
+      }
+
      public static void levelOrderLinewiseZigZag(Node node){
         Stack<Node> mst = new Stack<>();
         Stack<Node> cst = new Stack<>();
@@ -218,7 +234,9 @@ public class GenericTreeBasics{
 
         // levelOrderLinewise(root);
 
-        levelOrderLinewise1(root);
+        // levelOrderLinewise1(root);
+
+        levelOrderLinewise2(root);
 
         // levelOrderLinewiseZigZag(root);
 
