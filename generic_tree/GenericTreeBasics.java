@@ -231,12 +231,9 @@ public class GenericTreeBasics{
     }
 
     public static void mirror2(Node node) {
-
         if(node == null) {
              return;
         }
-
-    // Reverse the children
         for(int i = 0; i < node.children.size() / 2; i++) {
 
             int j = node.children.size() - i - 1;
@@ -248,7 +245,6 @@ public class GenericTreeBasics{
              node.children.set(j, child1);
         }
 
-    // Mirror every child
         for(Node child : node.children) {
             mirror(child);
         }
@@ -265,6 +261,27 @@ public class GenericTreeBasics{
             }
         }
        
+    }
+
+    public static void lineariseAGenericTree(Node node){
+        for(Node child: node.children){
+            lineariseAGenericTree(child);
+        }
+
+        while(node.children.size()>1){
+            Node l = node.children.remove(node.children.size() - 1);
+            Node sl = node.children.get(node.children.size() - 1);
+            Node tail = getTail(sl);
+            tail.children.add(l);
+            // System.out.println(l.data);
+        }
+    }
+
+    public static Node getTail(Node node){
+        while(node.children.size() == 1){
+            node = node.children.get(0);
+        }
+        return node;
     }
    
 
@@ -322,7 +339,10 @@ public class GenericTreeBasics{
         // System.out.println("\nAfter Mirror:");
         // display(root);
 
-        removeLeaf(root);
+        // removeLeaf(root);
+
+        lineariseAGenericTree(root);
+
         display(root);
 
      }
