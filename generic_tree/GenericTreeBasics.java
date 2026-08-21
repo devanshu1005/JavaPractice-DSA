@@ -29,6 +29,16 @@ public class GenericTreeBasics{
         // }
     }
 
+    private static class Pair{
+        Node node;
+        int level;
+
+        Pair(Node node, int level){
+            this.node = node;
+            this.level = level;
+        }
+    }
+
     public static void display(Node node){
         String str = node.data + " --> ";
         for(Node child: node.children){
@@ -166,6 +176,24 @@ public class GenericTreeBasics{
         }
       }
 
+      public static void levelOrderLinewise3(Node node){
+        Queue<Pair> q = new ArrayDeque<>();
+        q.add(new Pair(node, 1));
+        int level = 1;
+        while(q.size() > 0){
+            Pair p = q.remove();
+            if(p.level != level){
+                System.out.println();
+                level += 1;
+            }
+            System.out.print(p.node.data + " ");
+            for(Node child: p.node.children){
+                q.add(new Pair(child, level + 1));
+            }
+            
+        }
+      }
+
      public static void levelOrderLinewiseZigZag(Node node){
         Stack<Node> mst = new Stack<>();
         Stack<Node> cst = new Stack<>();
@@ -236,7 +264,9 @@ public class GenericTreeBasics{
 
         // levelOrderLinewise1(root);
 
-        levelOrderLinewise2(root);
+        // levelOrderLinewise2(root);
+
+        levelOrderLinewise3(root);
 
         // levelOrderLinewiseZigZag(root);
 
