@@ -283,6 +283,34 @@ public class GenericTreeBasics{
         }
         return node;
     }
+
+        public static void lineariseAGenericTree2(Node node){
+            //TODO: re watch lecture
+        }
+
+    public static boolean findAnElement(Node node, int element){
+        boolean result = false;
+        // Stack<Node> st = new Stack<>();
+        Queue<Node> q = new ArrayDeque<>();
+
+        q.add(node);
+
+        while(q.size() > 0){
+            node = q.remove();
+            int res = node.data;
+            System.out.println(res);
+            if(res == element){
+                // result = true;
+                return true;
+                // break;
+            } else {
+                for(Node child: node.children){
+                    q.add(child);
+                }
+            }
+        }
+        return result;
+    }
    
 
      public static void main(String[] args) {
@@ -341,9 +369,13 @@ public class GenericTreeBasics{
 
         // removeLeaf(root);
 
-        lineariseAGenericTree(root);
+        // lineariseAGenericTree(root);
 
-        display(root);
+        // display(root);
+
+       boolean found = findAnElement(root, 110);
+
+       System.out.println(found);
 
      }
 }
