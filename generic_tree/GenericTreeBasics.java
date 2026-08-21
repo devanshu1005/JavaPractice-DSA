@@ -290,7 +290,6 @@ public class GenericTreeBasics{
 
     public static boolean findAnElement(Node node, int element){
         boolean result = false;
-        // Stack<Node> st = new Stack<>();
         Queue<Node> q = new ArrayDeque<>();
 
         q.add(node);
@@ -300,9 +299,7 @@ public class GenericTreeBasics{
             int res = node.data;
             System.out.println(res);
             if(res == element){
-                // result = true;
                 return true;
-                // break;
             } else {
                 for(Node child: node.children){
                     q.add(child);
