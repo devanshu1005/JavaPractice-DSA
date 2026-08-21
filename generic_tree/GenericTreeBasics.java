@@ -222,6 +222,37 @@ public class GenericTreeBasics{
             }
         }
      }
+
+    public static void mirror(Node node){
+       for(Node child: node.children){
+        mirror(child);
+       }
+       Collections.reverse(node.children);
+    }
+
+    public static void mirror2(Node node) {
+
+        if(node == null) {
+             return;
+        }
+
+    // Reverse the children
+        for(int i = 0; i < node.children.size() / 2; i++) {
+
+            int j = node.children.size() - i - 1;
+
+            Node child1 = node.children.get(i);
+             Node child2 = node.children.get(j);
+
+             node.children.set(i, child2);
+             node.children.set(j, child1);
+        }
+
+    // Mirror every child
+        for(Node child : node.children) {
+            mirror(child);
+        }
+    }
    
 
      public static void main(String[] args) {
@@ -266,9 +297,17 @@ public class GenericTreeBasics{
 
         // levelOrderLinewise2(root);
 
-        levelOrderLinewise3(root);
+        // levelOrderLinewise3(root);
 
         // levelOrderLinewiseZigZag(root);
+
+        System.out.println("Before Mirror:");
+        display(root);
+
+        mirror(root);
+
+        System.out.println("\nAfter Mirror:");
+        display(root);
 
      }
 }
