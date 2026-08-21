@@ -253,6 +253,19 @@ public class GenericTreeBasics{
             mirror(child);
         }
     }
+
+    public static void removeLeaf(Node node){
+
+        for(int i=node.children.size() -1; i>=0; i--){
+            Node child = node.children.get(i);
+            if(child.children.size() == 0){
+                node.children.remove(child);
+            } else {
+            removeLeaf(child);
+            }
+        }
+       
+    }
    
 
      public static void main(String[] args) {
@@ -301,12 +314,15 @@ public class GenericTreeBasics{
 
         // levelOrderLinewiseZigZag(root);
 
-        System.out.println("Before Mirror:");
-        display(root);
+        // System.out.println("Before Mirror:");
+        // display(root);
 
-        mirror(root);
+        // mirror(root);
 
-        System.out.println("\nAfter Mirror:");
+        // System.out.println("\nAfter Mirror:");
+        // display(root);
+
+        removeLeaf(root);
         display(root);
 
      }
