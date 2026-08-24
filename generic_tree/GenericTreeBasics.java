@@ -308,6 +308,21 @@ public class GenericTreeBasics{
         }
         return result;
     }
+
+     public static boolean findAnElement2(Node node, int element){
+        if(node.data == element){
+            return true;
+        }
+
+        for(Node child: node.children){
+            boolean fic = findAnElement2(child, element);
+            if(fic){
+                return true;
+            }
+        }
+
+        return false;
+    }
    
 
      public static void main(String[] args) {
