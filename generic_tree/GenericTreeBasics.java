@@ -323,6 +323,24 @@ public class GenericTreeBasics{
 
         return false;
     }
+
+    public static ArrayList<Integer> nodeToRootPath (Node node, int data){
+        if(node.data == data){
+       ArrayList<Integer> path = new ArrayList<>();
+            path.addLast(node.data);
+            return path;
+        }
+
+        for(Node child: node.children){
+            ArrayList<Integer> pathTC = nodeToRootPath(child, data);
+            if(pathTC.size() > 0){
+                pathTC.addLast(node.data);
+            return pathTC;
+            }
+        }
+
+        return new ArrayList<>();
+    }
    
 
      public static void main(String[] args) {
@@ -385,9 +403,11 @@ public class GenericTreeBasics{
 
         // display(root);
 
-       boolean found = findAnElement(root, 110);
+    //    boolean found = findAnElement2(root, 110);
 
-       System.out.println(found);
+    ArrayList<Integer> path = nodeToRootPath(root, 110);
+
+       System.out.println(path);
 
      }
 }
