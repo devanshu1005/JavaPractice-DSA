@@ -449,8 +449,11 @@ public class GenericTreeBasics{
         return true;
      }
 
-is this correct for are trees mirror in shape?
-   
+      public static boolean isSymmetric(Node node){
+
+      return areMirror(node, node);
+     }
+
 
      public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
