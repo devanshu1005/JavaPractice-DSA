@@ -375,6 +375,26 @@ public class GenericTreeBasics{
         }
         return ans;
     }
+
+     public static int lowestCommonAncestor2 (Node node, int d1, int d2){
+
+        ArrayList<Integer> path1 = nodeToRootPath(node, d1);
+        ArrayList<Integer> path2 = nodeToRootPath(node, d2);
+
+        int i = path1.size() - 1;
+        int j = path2.size() - 1;
+
+        while(j >= 0 && i >= 0 && path1.get(i) == path2.get(j)){
+            i--;
+            j--;
+        }
+
+        i++;
+        j++;
+
+        return path1.get(i);
+
+     }
    
 
      public static void main(String[] args) {
@@ -442,7 +462,7 @@ public class GenericTreeBasics{
     ArrayList<Integer> path1 = nodeToRootPath(root, 40);
 
 
-    int lowestCommonAncestor = lowestCommonAncestor(root, 120, 110);
+    int lowestCommonAncestor = lowestCommonAncestor2(root, 120, 110);
 
        System.out.println(lowestCommonAncestor);
 
