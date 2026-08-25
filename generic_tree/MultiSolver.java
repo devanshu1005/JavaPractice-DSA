@@ -26,6 +26,10 @@ public class MultiSolver{
     static int size;
     static int height;
 
+    static Node predecessor;
+    static Node sucessor;
+    static int state;
+
     public static void multisolver(Node node, int depth){
         size++;
         min = Math.min(min, node.data);
@@ -35,6 +39,22 @@ public class MultiSolver{
             multisolver(child, depth + 1);
         }
         return;
+    }
+
+    public static void predecessorAndSucessor(Node node, int data){
+        if(state == 0){
+            if(node.data == data){
+                state = 1;
+            } else {
+                predecessor = node;
+            }
+        } else if (state == 1){
+                sucessor = node;
+                state = 2;
+        }
+        for(Node child: node.children){
+            predecessorAndSucessor(child, data);
+        }
     }
 
 
@@ -60,17 +80,26 @@ public class MultiSolver{
                 }
         }
         
-         min = Integer.MAX_VALUE;
+        min = Integer.MAX_VALUE;
         max = Integer.MIN_VALUE;
         size = 0;
         height = 0;
 
         multisolver(root, 0);
         
-        System.out.println("Min: " + min);
-        System.out.println("Max: " + max);
-        System.out.println("size: " + size);
-        System.out.println("height: " + height);
+        // System.out.println("Min: " + min);
+        // System.out.println("Max: " + max);
+        // System.out.println("size: " + size);
+        // System.out.println("height: " + height);
+
+        predecessor = null;
+        sucessor = null;
+        state = 0;
+        
+        predecessorAndSucessor(root, 50);
+
+        System.out.println("Predecessor: " + predecessor.data);
+        System.out.println("sucessor: " + sucessor.data);
 
      }
 }
