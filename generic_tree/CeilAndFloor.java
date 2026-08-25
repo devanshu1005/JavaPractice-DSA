@@ -47,6 +47,18 @@ public class CeilAndFloor{
         }
     }
 
+    public static int kthLargest(Node node, int k){
+        floor = Integer.MIN_VALUE;
+        int factor = Integer.MAX_VALUE;
+        for(int i = 0; i < k; i++){
+            ceilAndFloor(node, factor);
+            factor = floor;
+             floor = Integer.MIN_VALUE;
+        }
+
+        return factor;
+    }
+
 
      public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
@@ -79,6 +91,8 @@ public class CeilAndFloor{
 
         System.out.println("ceil: " + ceil);
         System.out.println("floor: " + floor);
+
+         System.out.println(kthLargest(root, 3));
 
      }
 }
