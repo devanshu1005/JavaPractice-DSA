@@ -24,6 +24,9 @@ public class CeilAndFloor{
     public static int ceil;
     public static int floor;
     public static int state;
+
+    public static Node maxNode;
+    public static int maximum;
     
     public static void ceilAndFloor(Node node, int data){
         if(state == 0){
@@ -59,10 +62,25 @@ public class CeilAndFloor{
         return factor;
     }
 
+    public static int nodeWithMaximumSubtree(Node node){
+        int sum = 0;
+        for(Node child: node.children){
+           int childSum = nodeWithMaximumSubtree(child);
+           sum = sum + childSum;
+        }
+        if((node.data + sum) > maximum){
+            maxNode = node;
+            maximum = node.data + sum;
+        }
+        return node.data + sum;
+    }
+
 
      public static void main(String[] args) {
-        int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
+        // int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
         // int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
+
+        int[] arr = {10, 20, -50, -1, -60, -1, -1, 30, -70, -1, 80, -110, -1, 120, -1, -1, 90, -1, -1, 40, -100, -1, -1, -1};
         Node root = null;
 
         Stack<Node> st = new Stack<>();
@@ -93,6 +111,12 @@ public class CeilAndFloor{
         System.out.println("floor: " + floor);
 
          System.out.println(kthLargest(root, 3));
+
+         maximum = Integer.MIN_VALUE;
+         maxNode = null;
+         int res = nodeWithMaximumSubtree(root);
+
+          System.out.println("maxNode: " + maxNode.data + "@" + maximum);
 
      }
 }
