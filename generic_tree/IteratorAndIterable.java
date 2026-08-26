@@ -41,7 +41,7 @@ public class IteratorAndIterable{
             nval = null;
 
             //moves nval forward if not possible sets it to null
-              while(st.size()>0){
+            while(st.size()>0){
             Pair p = st.peek();
             if(p.state == -1){
                 // pre = pre + p.node.data;
