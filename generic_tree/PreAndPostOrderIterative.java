@@ -3,9 +3,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 import java.util.*;
 
-//TODO: incomplete
-
-public class DiameterOfGenericTree{
+public class PreAndPostOrderIterative{
      public static class Node{
         int data;
         ArrayList<Node> children = new ArrayList<>();
@@ -23,16 +21,42 @@ public class DiameterOfGenericTree{
         }
     }
 
-    public static int maxDepth(Node node){
-        int depth = 0;
-        for(Node child: node.children){
-            int cd = maxDepth(child);
-            depth = Math.max(depth, cd);
+    public static class Pair{
+        Node node;
+        int state;
+
+        Pair(Node node, int state){
+            this.node = node;
+            this.state = state;
         }
-        return depth + 1;
     }
 
+    public static void preAndPosrOrder(Node node){
+        Stack<Pair> st = new Stack<>();
 
+        String pre = "";
+        String post = "";
+        st.push(new Pair(node, -1));
+
+        while(st.size()>0){
+            Pair p = st.peek();
+            if(p.state == -1){
+                pre = pre + p.node.data;
+                p.state++;
+            } else if(p.state == p.node.children.size()){
+                post = post + st.pop().node.data;
+            } else {
+                Pair toPush = new Pair(p.node.children.get(p.state), -1);
+                st.push(toPush);
+                p.state++;
+                 
+            }
+        }
+      System.out.println(pre);
+      System.out.println(post);
+    }
+
+   
      public static void main(String[] args) {
         int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1, -1, -1};
         // int[] arr = {10, 20, -1, 30, 50, -1, 60, -1,  -1,  40, -1};
@@ -40,26 +64,27 @@ public class DiameterOfGenericTree{
         // int[] arr = {10, 20, -50, -1, -60, -1, -1, 30, -70, -1, 80, -110, -1, 120, -1, -1, 90, -1, -1, 40, -100, -1, -1, -1};
         Node root = null;
 
-        Stack<Node> st = new Stack<>();
+        Stack<Node> s = new Stack<>();
 
         for(int i= 0; i<arr.length; i++){
                 if(arr[i] == -1){
-                    st.pop();
+                    s.pop();
                 } else {
                     Node t = new Node();
                     t.data = arr[i];
-                    if(st.size() == 0){
+                    if(s.size() == 0){
                         root = t;
                     } else {
-                        st.peek().children.add(t);
+                        s.peek().children.add(t);
                     }
-                    st.push(t);
+                    s.push(t);
                 }
         }
         
-          int res = maxDepth(root);
+        
+        preAndPosrOrder(root);
 
-          System.out.println(res);
+     
 
      }
 }
