@@ -110,6 +110,18 @@ public class BinaryTreeBasics{
         return height + 1;
     }
 
+    public static void traversal(Node node){
+        if(node == null){
+            return;
+        }
+        System.out.println(node.data + " in preorder ");
+       
+        traversal(node.left);
+        System.out.println(node.data + " in inorder ");
+        traversal(node.right);
+        System.out.println(node.data + " in postorder ");
+    }
+
     public static void main(String[] args) throws Exception{
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
@@ -177,5 +189,7 @@ public class BinaryTreeBasics{
 
          int height = height(root);
         System.out.println("height: " + height);
+
+        traversal(root);
     }
 }
