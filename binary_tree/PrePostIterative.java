@@ -76,7 +76,7 @@ public class PrePostIterative{
 
     }
 
-     public static void levelOrderTraversal(Node node, int k){
+     public static void printKLevels(Node node, int k){
         int level = 0;
         if(node == null){
             return;
@@ -105,6 +105,19 @@ public class PrePostIterative{
                 level++;
             }
         }
+    }
+
+     public static void printKLevels2(Node node, int k){
+        if(node == null || k<0){
+            return;
+        }
+
+         if(k == 0){
+            System.out.print(node.data + " ");
+        }
+        printKLevels2(node.left, k-1);
+        printKLevels2(node.right, k-1);
+       
     }
 
      public static ArrayList<Integer> nodeToRootPath(Node node, int data){
@@ -181,7 +194,7 @@ public class PrePostIterative{
             // ArrayList<Integer> ans = nodeToRootPath(root, 70);
             // System.out.println(ans);
 
-            levelOrderTraversal(root, 2);
+            printKLevels2(root, 2);
 
             
     }
