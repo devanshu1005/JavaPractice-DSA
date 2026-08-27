@@ -122,3 +122,6 @@ DiameterOfGenericTree
 PreAndPostOrderIterative
 IteratorAndIterable
 BinaryTreeBasics and display
+multisolver, size, height, max, sum in binary tree
+traversal in binary tree
+levelOrderTraversal in binary tree
