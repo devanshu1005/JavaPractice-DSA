@@ -146,6 +146,38 @@ public class PrePostIterative{
        return  new ArrayList<>();
     }
 
+    //kLevelFar : Lecture :329
+    // TODO:
+
+      public static void pathLeafFromRoot(Node node, String path, int sum, int low, int high){
+        if(node == null){
+            return;
+        }
+        if(node.left == null && node.right == null){
+            System.out.println(path + node.data + " , " + (sum + node.data));
+        }
+        pathLeafFromRoot(node.left, path + node.data, sum + node.data, low, high);
+        pathLeafFromRoot(node.right, path + node.data, sum + node.data, low, high);
+      }
+
+    // TODO: transform to left cloned : lecture : 333
+    // TODO: transform back from left cloned : lecture : 335
+
+    //   public static void transformToLeftCloned(Node node){
+    //     if(node == null){
+    //         return;
+    //     }
+    //     Node tempNode = node;
+    //     Node oldLeft = node.left;
+    //     node.left = tempNode;
+    //     tempNode.left = oldLeft;
+       
+
+    //     transformToLeftCloned(node.left);
+       
+    //     transformToLeftCloned(node.right);
+    //   }
+
     public static void main(String[] args) throws Exception{
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
@@ -194,8 +226,13 @@ public class PrePostIterative{
             // ArrayList<Integer> ans = nodeToRootPath(root, 70);
             // System.out.println(ans);
 
-            printKLevels2(root, 2);
+            // printKLevels2(root, 2);
 
+            //  pathLeafFromRoot(root, "", 0, 30, 40);
+
+            transformToLeftCloned(root);
+
+             display(root);
             
     }
 }
