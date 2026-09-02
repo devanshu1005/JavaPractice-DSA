@@ -178,6 +178,19 @@ public class PrePostIterative{
     //     transformToLeftCloned(node.right);
     //   }
 
+    public static void printSingleChild(Node node){
+        if(node == null){
+            return;
+        }
+
+        if((node.left == null && node.right != null) || (node.left != null && node.right == null)){
+            System.out.println(node.data);
+        }
+
+        printSingleChild(node.left);
+        printSingleChild(node.right);
+    }
+
     public static void main(String[] args) throws Exception{
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
@@ -230,9 +243,11 @@ public class PrePostIterative{
 
             //  pathLeafFromRoot(root, "", 0, 30, 40);
 
-            transformToLeftCloned(root);
+            // transformToLeftCloned(root);
 
-             display(root);
+            //  display(root);
+
+            printSingleChild(root);
             
     }
 }
