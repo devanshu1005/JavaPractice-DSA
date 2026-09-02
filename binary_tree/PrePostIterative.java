@@ -191,6 +191,43 @@ public class PrePostIterative{
         printSingleChild(node.right);
     }
 
+    public static boolean isALeaf(Node node){
+        // System.out.println("entered is a leaf ");
+         if(node == null){
+            return false;
+        }
+
+        if(node.left == null && node.right == null){
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void removeLeaf(Node node){
+        if(node == null){
+            return;
+        }
+
+
+       boolean left = isALeaf(node.left);
+       boolean right = isALeaf(node.right);
+
+       if(left == true){
+        System.out.println("removing " + node.left.data);
+        node.left = null;
+       } 
+
+       if(right == true){
+        System.out.println("removing " + node.right.data);
+        node.right = null;
+       }
+
+       removeLeaf(node.left);
+       removeLeaf(node.right);
+    }
+
+
     public static void main(String[] args) throws Exception{
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
@@ -245,9 +282,14 @@ public class PrePostIterative{
 
             // transformToLeftCloned(root);
 
-            //  display(root);
 
-            printSingleChild(root);
+            // printSingleChild(root);
+
+            removeLeaf(root);
+
+             display(root);
+
+
             
     }
 }
