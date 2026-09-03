@@ -127,3 +127,7 @@ traversal in binary tree
 levelOrderTraversal in binary tree
 PrePostIterative binary tree
 printKLevels binary tree
+printKLevels2 binary tree
+pathLeafFromRoot
+printSingleChild
+removeLeaf in binary tree
